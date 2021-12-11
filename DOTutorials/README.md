@@ -1,6 +1,6 @@
 # DigitalOcean Tutorials
 
-### Description
+## Description
 
 This section is going to include How-To guides for working with the DigitalOcean Cloud Platform
 

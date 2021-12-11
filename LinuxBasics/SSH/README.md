@@ -18,8 +18,11 @@ I will be splitting up training topics into quick How-to guides and more in dept
 * SSH Keys using ssh-keygen
 * SSH Keys using puttygen
 * Setup chroot SFTP environment
+* Change SSH Port
 
 
 ## Technical Guides
 * Troubleshooting: Unable to Connect via SSH
 * SSH vs SFTP
+* SSH Related Logs
+* Hardening SSH

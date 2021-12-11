@@ -8,5 +8,7 @@ I will be splitting up training topics into quick How-to guides and more in dept
 
 ## How To Guides:
 * Manual Installation Process
+* Modify Site_URL and Base_URL
 
 ## Technical Guides
+* Troubleshooting: Common Errors
