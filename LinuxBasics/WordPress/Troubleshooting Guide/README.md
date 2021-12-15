@@ -37,9 +37,9 @@ A WordPress site was copied over to a new server to serve as a staging/developme
 
 ### How to Correct This Issue
 
-* A proactive method would be to update the URLs in the Admin page and then backup your files and database
-  * Revert your changes if keeping existing installation as is
-* If you cannot access your Admin page, you will need to access the host server
+* A proactive method would be to update the URLs in the Admin page and then backup the files and database
+  * Revert changes if keeping existing installation as is
+* If Admin page is inaccessible, access to the host server is required
   * Methods using SFTP/FTP/SSH
     * Update wp-content/themes/your-theme-folder/functions.php with the following at the bottom:
     ```
