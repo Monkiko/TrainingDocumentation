@@ -6,9 +6,9 @@
 3. Unable to upload files
 4. Displays a blank page
 5. Faulty plugin/theme
-
-
-
+<p><br>
+<br>
+</p>
 ### Resources
 
 * https://www.wpbeginner.com/wp-tutorials/how-to-properly-move-wordpress-to-a-new-domain-without-losing-seo/
