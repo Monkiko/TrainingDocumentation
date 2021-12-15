@@ -12,3 +12,4 @@ I will be splitting up training topics into quick How-to guides and more in dept
 
 ## Technical Guides
 * Troubleshooting: Common Errors
+* Performance Analysis
