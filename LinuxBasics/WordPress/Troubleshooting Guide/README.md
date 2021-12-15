@@ -11,9 +11,9 @@
 
 ### Resources
 
-https://www.wpbeginner.com/wp-tutorials/how-to-properly-move-wordpress-to-a-new-domain-without-losing-seo/
-https://www.wpbeginner.com/wp-tutorials/how-to-change-your-wordpress-site-urls-step-by-step/
-https://kinsta.com/knowledgebase/wordpress-change-url/
+* https://www.wpbeginner.com/wp-tutorials/how-to-properly-move-wordpress-to-a-new-domain-without-losing-seo/
+* https://www.wpbeginner.com/wp-tutorials/how-to-change-your-wordpress-site-urls-step-by-step/
+* https://kinsta.com/knowledgebase/wordpress-change-url/
 
 
 
