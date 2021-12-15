@@ -7,7 +7,6 @@
 4. Displays a blank page
 5. Faulty plugin/theme
 <p><br>
-<br>
 </p>
 
 ### Resources
@@ -25,7 +24,6 @@
 
 A WordPress site was copied over to a new server to serve as a staging/development server. DNS records were created for staging.domain.com pointing to the new server. Whenever the Administrator tries to login to wp-admin.php, they are being redirected back to the original domain.
 <p><br>
-<br>
 </p>
 
 ### How Does this Happen?
@@ -35,7 +33,6 @@ A WordPress site was copied over to a new server to serve as a staging/developme
 * site_url and base_url/home can also be hardcoded in wp-config.php
 * Less commonly, URLs or IP addresses can be hardcoded into the website code itself, separate from the WordPress code
 <p><br>
-<br>
 </p>
 
 ### How to Correct This Issue
