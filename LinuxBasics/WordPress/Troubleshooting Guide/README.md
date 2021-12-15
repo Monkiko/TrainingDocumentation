@@ -9,6 +9,7 @@
 <p><br>
 <br>
 </p>
+
 ### Resources
 
 * https://www.wpbeginner.com/wp-tutorials/how-to-properly-move-wordpress-to-a-new-domain-without-losing-seo/
@@ -17,6 +18,7 @@
 <p><br>
 <br>
 </p>
+
 ## Redirect to Old Site
 
 ### Scenario
@@ -25,6 +27,7 @@ A WordPress site was copied over to a new server to serve as a staging/developme
 <p><br>
 <br>
 </p>
+
 ### How Does this Happen?
 
 * There are database records that indicate the site_url and base_url/home that the application is responding to
@@ -34,6 +37,7 @@ A WordPress site was copied over to a new server to serve as a staging/developme
 <p><br>
 <br>
 </p>
+
 ### How to Correct This Issue
 
 * A proactive method would be to update the URLs in the Admin page and then backup your files and database
@@ -64,4 +68,5 @@ A WordPress site was copied over to a new server to serve as a staging/developme
 <p><br>
 <br>
 </p>
+
 ## Database Connection Error
