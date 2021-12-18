@@ -4,7 +4,7 @@
 1. Redirect to Old Site
 2. Database Connection Error
 3. Unable to upload files
-4. Displays a blank page
+4. Blank Page Displayed
 5. Faulty plugin/theme
 <p><br>
 </p>
@@ -52,7 +52,7 @@ A WordPress site was copied over to a new server to serve as a staging/developme
     define( 'WP_SITEURL', 'https://domain.com' );
     ```
   * Method requiring SSH access
-    * Use wp-cli from the terminal
+    * Use wp-cli from the terminal:
     ```
     wp option update home 'https://domain.com'
     wp option update siteurl 'https://domain.com'
