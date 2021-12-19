@@ -67,3 +67,16 @@ A WordPress site was copied over to a new server to serve as a staging/developme
 </p>
 
 ## Database Connection Error
+
+* This error is when the WordPress application is unable to communicate with the database backend
+* Is prominently displayed when browsing to the website
+* Is shown as a 500 status error code when running curl against the site
+```
+
+```
+<p><br>
+</p>
+
+## Causes of this Error
+
+* The host server has ran out of memory and oom-killer killed the mysqld process
