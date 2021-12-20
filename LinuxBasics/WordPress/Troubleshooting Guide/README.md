@@ -14,6 +14,7 @@
 * https://www.wpbeginner.com/wp-tutorials/how-to-properly-move-wordpress-to-a-new-domain-without-losing-seo/
 * https://www.wpbeginner.com/wp-tutorials/how-to-change-your-wordpress-site-urls-step-by-step/
 * https://kinsta.com/knowledgebase/wordpress-change-url/
+* https://www.wpbeginner.com/wp-tutorials/how-to-fix-the-error-establishing-a-database-connection-in-wordpress/
 <p><br>
 <br>
 </p>
@@ -77,6 +78,96 @@ A WordPress site was copied over to a new server to serve as a staging/developme
 <p><br>
 </p>
 
-## Causes of this Error
+### Causes of this Error
 
 * The host server has ran out of memory and oom-killer killed the mysqld process
+* Incorrect database information in wp-config.php
+* Database host server is down
+<p><br>
+<br>
+</p>
+
+### Typical Investigation Steps
+* Check the status of the MySQL/MariaDB service
+
+```
+Ubuntu 14.04/RedHat 6 and earlier
+---------------------------------
+
+# Ubuntu
+service mysql status
+
+# RedHat
+service mysqld status
+
+Ubuntu 16.04/RedHat 7 and later
+-------------------------------
+
+# Ubuntu
+systemctl status mysql
+
+# RedHat
+systemctl status mysqld
+```
+
+  * If the service is dead/inactive, parse the system logs for Out of Memory errors:
+
+  ```
+
+  # Ubuntu
+  egrep -i "Out of Memory| oom" /var/log/syslog
+
+  # RedHat
+  egrep -i "Out of Memory| oom" /var/log/messages
+
+  ```
+
+* Check if wp-config.php contains the correct credentials
+  * Configuration Example:
+
+  ```
+  root@Monkiko-WordPress:~# grep -i 'DB_' /var/www/html/wp-config.php
+  define( 'DB_NAME', 'wordpress' );
+  define( 'DB_USER', 'wordpress' );
+  define( 'DB_PASSWORD', '07e03897714e8a123e634ebf08c6d2a5cfa4fa5f474ade6d' );
+  define( 'DB_HOST', 'localhost' );
+  define( 'DB_CHARSET', 'utf8' );
+  define( 'DB_COLLATE', '' );
+  ```
+
+* In environments where the web server and the database server are located on different devices, need to check the database host server
+<p><br>
+<br>
+</p>
+
+### Remediation
+
+* If the service is stopped/dead:
+
+```
+Ubuntu 14.04/RedHat 6 and earlier
+---------------------------------
+
+# Ubuntu
+service mysql restart
+
+# RedHat
+service mysqld restart
+
+Ubuntu 16.04/RedHat 7 and later
+-------------------------------
+
+# Ubuntu
+systemctl restart mysql
+
+# RedHat
+systemctl restart mysqld
+```
+
+* Can test Database credentials using CLI:
+
+```
+root@localhost:~# mysql -h localhost -u wordpress -p
+```
+
+  * If credentials don't work, either update wp-config.php or update the credentials in MySQL/MariaDB
