@@ -62,7 +62,10 @@ A WordPress site was copied over to a new server to serve as a staging/developme
     * Using PHPMyAdmin/MySQL Workbench
       * Find wp_options (by default) table, look for option_name of siteurl and home, update option_value with https://domain.com
     * Using SQL Query
-      * UPDATE
+      ```
+      UPDATE wp_options SET option_value="http://new_host/wordpress" WHERE option_name = "home";
+      UPDATE wp_options SET option_value="http://new_host/wordpress" WHERE option_name = "siteurl";
+      ```
 <p><br>
 <br>
 </p>
@@ -99,6 +102,7 @@ service mysql status
 
 # RedHat
 service mysqld status
+
 
 Ubuntu 16.04/RedHat 7 and later
 -------------------------------
@@ -153,6 +157,7 @@ service mysql restart
 
 # RedHat
 service mysqld restart
+
 
 Ubuntu 16.04/RedHat 7 and later
 -------------------------------
