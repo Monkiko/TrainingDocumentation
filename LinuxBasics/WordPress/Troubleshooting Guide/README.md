@@ -19,7 +19,7 @@
 <br>
 </p>
 
-## Redirect to Old Site
+## 1) Redirect to Old Site
 
 ### Scenario
 
@@ -70,7 +70,7 @@ A WordPress site was copied over to a new server to serve as a staging/developme
 <br>
 </p>
 
-## Database Connection Error
+## 2) Database Connection Error
 
 * This error is when the WordPress application is unable to communicate with the database backend
 * Is prominently displayed when browsing to the website
@@ -176,3 +176,15 @@ root@localhost:~# mysql -h localhost -u wordpress -p
 ```
 
   * If credentials don't work, either update wp-config.php or update the credentials in MySQL/MariaDB
+  <p><br>
+  <br>
+  </p>
+
+## 3) Unable to Upload Files
+
+* This error can appear in two circumstances:
+  * While using SFTP, SSH, SCP, rsync to copy/upload files
+  * Using the WordPress Admin control panel to upload files
+* This is usually a matter of ownership and permissions
+<p><br>
+</p>
