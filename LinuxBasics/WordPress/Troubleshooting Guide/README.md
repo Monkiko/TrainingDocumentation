@@ -87,7 +87,6 @@ A WordPress site was copied over to a new server to serve as a staging/developme
 * Incorrect database information in wp-config.php
 * Database host server is down
 <p><br>
-<br>
 </p>
 
 ### Typical Investigation Steps
@@ -141,7 +140,6 @@ systemctl status mysqld
 
 * In environments where the web server and the database server are located on different devices, need to check the database host server
 <p><br>
-<br>
 </p>
 
 ### Remediation
@@ -188,3 +186,29 @@ root@localhost:~# mysql -h localhost -u wordpress -p
 * This is usually a matter of ownership and permissions
 <p><br>
 </p>
+
+### Typical Investigative Steps
+
+* Review the web server error logs
+  * Default Locations:
+    * Apache
+      * Debian/Ubuntu: /var/log/apache2/error.log
+      * RHEL/CentOS/Fedora: /var/log/httpd/error.log
+    * Nginx
+      * /var/log/nginx/error.log
+* Check webroot ownership and permissions
+  * Example w/ Default webroot
+    ```
+    $ ls -alh /var/www/html/
+    ```
+  * Required ownership and permissions depends on typical upload method and PHP provider
+    * Using CLI upload solutions with mod_php
+      * Uploading user account needs write permission to directory either as owner or as member of group owner
+      * Apache needs write permission in order for PHP functions to be able to modify/create files
+      * Commonly w/ ownership of `<user>:apache` or `<user>:www-data` with `2775` for directories and `2664` for files
+        * If multiple users need access, either a new group can be made and include Apache (recommended) or add all users to Apache group
+    * Using CLI upload solutions with PHP-FPM
+      * Uploading user account needs write permission to directory either as owner or as member of group owner
+      * Need to make sure ownership is set to the user and group owner(s) configured in PHP-FPM's pool configuration file
+        * The default user and group is www-data (typically)
+    * Using the WordPress Admin Control Panel
