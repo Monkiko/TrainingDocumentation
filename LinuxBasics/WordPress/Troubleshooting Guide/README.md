@@ -15,6 +15,7 @@
 * https://www.wpbeginner.com/wp-tutorials/how-to-change-your-wordpress-site-urls-step-by-step/
 * https://kinsta.com/knowledgebase/wordpress-change-url/
 * https://www.wpbeginner.com/wp-tutorials/how-to-fix-the-error-establishing-a-database-connection-in-wordpress/
+* https://www.wpbeginner.com/wp-tutorials/how-to-fix-the-wordpress-white-screen-of-death/
 <p><br>
 <br>
 </p>
@@ -90,6 +91,7 @@ A WordPress site was copied over to a new server to serve as a staging/developme
 </p>
 
 ### Typical Investigation Steps
+
 * Check the status of the MySQL/MariaDB service
 
 ```
@@ -187,6 +189,11 @@ root@localhost:~# mysql -h localhost -u wordpress -p
 <p><br>
 </p>
 
+### Common Causes of this Error
+
+* Ownership/Permissions doesn't allow a user write access
+* Ownership/Permissions doesn't allow for PHP/PHP-FPM write access
+
 ### Typical Investigative Steps
 
 * Review the web server error logs
@@ -196,19 +203,62 @@ root@localhost:~# mysql -h localhost -u wordpress -p
       * RHEL/CentOS/Fedora: /var/log/httpd/error.log
     * Nginx
       * /var/log/nginx/error.log
+* If using PHP-FPM, review error logs
+  * Default Location
+    * Debian/Ubuntu: /var/log/php<version_number>-fpm.log
+    * RHEL/CentOS/Fedora: /var/log/php-fpm/error.log
 * Check webroot ownership and permissions
   * Example w/ Default webroot
     ```
     $ ls -alh /var/www/html/
     ```
-  * Required ownership and permissions depends on typical upload method and PHP provider
-    * Using CLI upload solutions with mod_php
-      * Uploading user account needs write permission to directory either as owner or as member of group owner
-      * Apache needs write permission in order for PHP functions to be able to modify/create files
-      * Commonly w/ ownership of `<user>:apache` or `<user>:www-data` with `2775` for directories and `2664` for files
-        * If multiple users need access, either a new group can be made and include Apache (recommended) or add all users to Apache group
-    * Using CLI upload solutions with PHP-FPM
-      * Uploading user account needs write permission to directory either as owner or as member of group owner
-      * Need to make sure ownership is set to the user and group owner(s) configured in PHP-FPM's pool configuration file
-        * The default user and group is www-data (typically)
-    * Using the WordPress Admin Control Panel
+    <p><br>
+    </p>
+
+### Remediation
+
+* Required ownership and permissions depends on typical upload method and PHP provider
+  * Using CLI upload solutions with mod_php
+    * Uploading user account needs write permission to directory either as owner or as member of group owner
+    * Apache needs write permission in order for PHP functions to be able to modify/create files
+    * Commonly w/ ownership of `<user>:apache` or `<user>:www-data` with `2775` for directories and `2664` for files
+      * If multiple users need access, either a new group can be made and include Apache (recommended) or add all users to Apache group
+  * Using CLI upload solutions with PHP-FPM
+    * Uploading user account needs write permission to directory either as owner or as member of group owner
+    * Need to make sure ownership is set to the user and group owner(s) configured in PHP-FPM's pool configuration file
+      * The default user and group is www-data (typically)
+  * Using the WordPress Admin Control Panel
+    * Apache (if using mod_php) or PHP-FPM user/group needs write permission as uploads from the control panel are performed by PHP
+    * Commonly configured as `apache:apache` or `www-data:www-data` with `2755` for directories and `2644` for files
+* If the issue is not due to ownership/permissions conflict, this will most likely be due to some PHP and/or code related issue
+  * Recommend using the following command to read the error log(s) including live updates while trying to upload a file
+    ```
+    tail -f /path/to/error/log
+    ```
+    <p><br>
+    <br>
+    </p>
+
+## 4) Blank Page Displayed
+
+* Site returns a 200 OK status code but browsing to the site shows a blank page
+* Running a curl command on the site returns an empty response
+* In newer versions of WordPress, can show as "The site is experiencing technical difficulties"
+<p><br>
+</p>
+
+### Common Causes of this Error
+
+* A script was unable to execute as expected
+  * PHP-FPM (or even mod_php) is not running or is missing a necessary PHP module
+  * Memory Exhaustion. This can result in a couple different scenarios
+    * oom-killer was invoked and PHP-FPM processes were killed off
+      * This can result in PHP-FPM being in a dead or failed state
+    * Scripts fail to execute due to insufficient memory
+* A problem/incompatibility with a WordPress plugin
+  * Usually the result of a plugin update
+  * Sometimes due to PHP/PHP-FPM being updated and not compatible with the plugin
+  <p><br>
+  </p>
+
+### Typical Investigative Steps
