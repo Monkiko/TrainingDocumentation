@@ -262,3 +262,19 @@ root@localhost:~# mysql -h localhost -u wordpress -p
   </p>
 
 ### Typical Investigative Steps
+
+* Check ownership and permissions of files and directories of web root and plugins folder
+  * Make sure that PHP/PHP-FPM has write access to the directories of the webroot, plugins, etc.
+* Check to make sure PHP-FPM is running
+* Check if oom-killer was invoked and killed off PHP-FPM
+  ```
+  egrep -i 'oom|Out of Memory' /var/log/syslog | grep -i php
+  ```
+* Review Apache/Nginx logs for errors
+* Enable WordPress debug mode
+  * Add the following to wp-config.php:
+  ```
+  define( 'WP_DEBUG', true);
+  define( 'WP_DEBUG_LOG', true);
+  ```
+* Move/Rename plugins folder to disable all plugins and then re-enable them one at a time
