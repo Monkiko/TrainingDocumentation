@@ -278,3 +278,17 @@ root@localhost:~# mysql -h localhost -u wordpress -p
   define( 'WP_DEBUG_LOG', true);
   ```
 * Move/Rename plugins folder to disable all plugins and then re-enable them one at a time
+* Check package update history to see if PHP/PHP-FPM was recently updated
+  ```
+  In RHEL-based systems:
+
+  yum history list
+
+  In Debian-based systems:
+
+  less /var/log/apt/history.log
+  ```
+  <p><br>
+  </p>
+
+### Remediation Steps
