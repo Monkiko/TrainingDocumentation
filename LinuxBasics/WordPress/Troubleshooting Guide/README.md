@@ -5,7 +5,6 @@
 2. Database Connection Error
 3. Unable to upload files
 4. Blank Page Displayed
-5. Faulty plugin/theme
 <p><br>
 </p>
 
@@ -292,3 +291,10 @@ root@localhost:~# mysql -h localhost -u wordpress -p
   </p>
 
 ### Remediation Steps
+
+* Start PHP-FPM if it is not running; Check if all necessary PHP modules are installed *AND* loaded
+* If oom-killer is being invoked, tune your application, increase amount of Memory available to the system, utilize a CDN service, utilize memcache, etc
+* If plugin is incompatible, either downgrade plugin or find a compatible alternative plugin.
+<p><br>
+<br>
+</p>
