@@ -28,6 +28,7 @@ Another approach is to gather readings throughout the day and then compare them 
 
 ### Example Recap Report
 
+```
   2022-03-24_12:00:01
   UPTIME report
   12:00:01 up 2 days, 11:33,  0 users,  load average: 0.00, 0.00, 0.00
@@ -120,3 +121,4 @@ Another approach is to gather readings throughout the day and then compare them 
   root         823  0.0  0.2  29272 17996 ?        Ss   Mar22   0:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
   root         390  0.0  0.1  35060 14736 ?        S<s  Mar22   0:03 /lib/systemd/systemd-journald
   www-data   66249  0.0  0.1 195884 13340 ?        S    00:00   0:00 /usr/sbin/apache2 -k start
+```
