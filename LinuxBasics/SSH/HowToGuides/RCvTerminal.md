@@ -27,8 +27,22 @@
 
 ## Example Commands
 
-### Standard SSH connection
+#### Standard SSH Connection
 
 ```
-ssh root@<ip_address>
+ssh <username>@<ip_address>
+
+## Example
+
+ssh root@192.168.1.1
+```
+
+#### SSH Connection on an Alternate Port
+
+```
+ssh -p <port> <username>@<ip_address>
+
+## Example
+
+ssh -p 2225 root@192.168.1.2
 ```
