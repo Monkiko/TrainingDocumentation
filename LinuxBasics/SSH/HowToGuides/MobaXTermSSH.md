@@ -4,7 +4,9 @@
 
 ### Features
 
-
+* Tabbed Terminals - Can run multiple terminal sessions at the same time within multiple tabs
+* Can utilize multiple types of remote sessions including SSH, Telnet, RDP, VNC, FTP, SFTP, etc.
+*
 
 
 ## Example Commands
