@@ -14,7 +14,6 @@ I will be splitting up training topics into quick How-to guides and more in dept
 * Remote Connect via Filezilla Client
 * Disable Root Login
 * Enable/Disable Password Logins
-* Change Listening Port for SSH
 * SSH Keys using ssh-keygen
 * SSH Keys using puttygen
 * Setup chroot SFTP environment

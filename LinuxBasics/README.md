@@ -7,7 +7,7 @@ The topics covered in this section will be either in a practical "how-to" format
 
 General topic:
 - 404 errors
-- issue related to .htacess
+- issue related to .htaccess
 - ssh sftp
 - MySQL's optimization (error connecting database)
 - Wordpress Troubleshooting
@@ -15,3 +15,5 @@ General topic:
 - Setting up VirtualHosts/Server Blocks (Apache vs Nginx)
 - Recap
 - System Resource bottleneck troubleshooting
+- Networking configuration files
+- Troubleshooting Loss of Networking

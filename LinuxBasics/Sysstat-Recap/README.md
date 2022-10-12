@@ -26,7 +26,7 @@ Another approach is to gather readings throughout the day and then compare them 
 <p><br>
 </p>
 
-### Example Recap Report
+### Example Recap Resources Report
 
 ```
 2022-03-24_12:00:01
