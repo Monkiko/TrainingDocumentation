@@ -22,3 +22,4 @@ The general flow of this guide is investigate and verify external causes and wor
 
 ## SSH Connection Requirements
 
+In order to connect to a Linux server via SSH, there are several common things to consider: 1) Is there a firewall between you and the Linux server that may be rejecting/blocking your connection? 2) Is the SSH service running on the Linux server? 3) Are you connecting to the correct port that SSH is listening on?
